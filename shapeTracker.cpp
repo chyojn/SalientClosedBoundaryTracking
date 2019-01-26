@@ -27,32 +27,37 @@ int RC(vector<double*> *graph, int ncount, int ecount, int NumIteration, string 
 int BDSP(vector<double*> *graph,vector<double*> lines_vc, vector<Point> &ptPolygon, int WIDTH, int HEIGHT);
 */
 
+#include <EDLines.h>
+
 int lines_detector(Mat grayScaleFrame, vector<double*> &lines_vc){
 
     vector<double*> tmplines;
-    int width = grayScaleFrame.size().width;
-    int height = grayScaleFrame.size().height;
+//    int width = grayScaleFrame.size().width;
+//    int height = grayScaleFrame.size().height;
 
-    unsigned char *srcImg;
-    srcImg = grayScaleFrame.data;
+//    unsigned char *srcImg;
+//    srcImg = grayScaleFrame.data;
 
-    int noLines;
-    LS *lines = DetectLinesByED(srcImg, width, height, &noLines);
+//    int noLines;
+//    LS *lines = DetectLinesByED(srcImg, width, height, &noLines);
+    EDLines edlines = EDLines(grayScaleFrame);
+    vector<LS> lines = edlines.getLines();
+    int noLines = lines.size();
 
     double *one_line;
 
     if(noLines > 0){
         for (int i=0; i<noLines; i++){
             one_line = new double[4];
-            one_line[0] = lines[i].sx;
-            one_line[1] = lines[i].sy;
-            one_line[2] = lines[i].ex;
-            one_line[3] = lines[i].ey;
+            one_line[0] = lines[i].start.x;
+            one_line[1] = lines[i].start.y;
+            one_line[2] = lines[i].end.x;
+            one_line[3] = lines[i].end.y;
             tmplines.push_back(one_line);
         } //end-for
     }
     lines_vc.swap(tmplines);
-    delete lines;
+//    delete lines;
     return noLines;
 }
 

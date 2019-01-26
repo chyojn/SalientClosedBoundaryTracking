@@ -4,7 +4,7 @@
 #include <opencv2/opencv.hpp>
 
 #include "Timer.h"
-#include "LS.h"
+//#include "LS.h"
 
 #include <iostream>
 #include <fstream>

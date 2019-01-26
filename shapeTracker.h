@@ -10,7 +10,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include "LS.h"
+//#include "LS.h"
 #include "CmdLine.h"
 
 #include "construct_graph.h"
@@ -22,7 +22,7 @@ using namespace std;
 using namespace cv;
 
 /// Function prototype for DetectEdgesByED exported by EDLinesLib.a
-LS *DetectLinesByED(unsigned char *srcImg, int width, int height, int *pNoLines);
+//LS *DetectLinesByED(unsigned char *srcImg, int width, int height, int *pNoLines);
 
 // Function for contructing graph on line segments extracted by EDLines
 //vector<double*>* construct_graph_dt(vector<double*> Ltable, double WIDTH, double HEIGHT, double LAMBDA, double ALPHA, vector<Point> ptPolygon,vector<double*> &usedLines);
